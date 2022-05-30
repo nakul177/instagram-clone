@@ -1,5 +1,4 @@
 
-import firebase  from 'firebase'
 
 // const firebaseConfig = {
 //     apiKey: "AIzaSyABGSz4FPA79uiiX2f3x3jJTMQrwLWHt0g",
@@ -10,8 +9,11 @@ import firebase  from 'firebase'
 //     appId: "1:776183132291:web:ea0f563068dc2b46196bb6",
 //     measurementId: "G-4KEJK2W2DG"
 //   };
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
-  const firebaseApp = firebase.initializeApp({
+const firebaseConfig = {
     apiKey: "AIzaSyABGSz4FPA79uiiX2f3x3jJTMQrwLWHt0g",
     authDomain: "instagarm-clone-app.firebaseapp.com",
     projectId: "instagarm-clone-app",
@@ -19,10 +21,14 @@ import firebase  from 'firebase'
     messagingSenderId: "776183132291",
     appId: "1:776183132291:web:ea0f563068dc2b46196bb6",
     measurementId: "G-4KEJK2W2DG"
-  })
- 
-  const db = firebaseApp.firestore();
-  const auth = firebase.auth();
-  const storage = firebase.storage();
+};
 
-  export {db , auth , storage };
+// Use this to initialize the firebase App
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+// Use these for db & auth
+const db = firebaseApp.firestore();
+const auth = firebase.auth();
+const storage = firebase.storage();
+
+export { auth, db , storage};
